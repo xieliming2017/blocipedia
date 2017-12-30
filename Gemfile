@@ -40,6 +40,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'thor', '0.19.1'
 
+gem 'figaro', '1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
