@@ -15,6 +15,14 @@
       <ul class="nav nav-tabs">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Wikis", wikis_path %></li>
+
+        <% if current_user %>
+          <li class="pull-right"><%= link_to "#{current_user.email} - Logout", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="pull-right"><%= link_to "Login", new_user_session_path %></li>
+          <li class="pull-right"><%= link_to "SignUp", new_user_registration_path %></li>
+        <% end %>
       </ul>
 
       <% if flash[:notice] %>

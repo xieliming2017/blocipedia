@@ -42,6 +42,8 @@ gem 'thor', '0.19.1'
 
 gem 'figaro', '1.0'
 
+gem 'pundit'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
