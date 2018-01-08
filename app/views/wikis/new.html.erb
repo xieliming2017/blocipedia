@@ -15,7 +15,7 @@
       <% if current_user.standard? %>
         <div class="form-group">
           <%= f.label :private %>
-          <%= f.check_box :private, class: 'form-control', checked: true, disabled: true %>
+          <%= f.check_box :private, class: 'form-control', checked: false, disabled: true %>
           As a standard user, you can only create public wikis.
           Upgrade to premium account to create your own private wikis!
         </div>

@@ -1,0 +1,10 @@
+<h1>Downgrade Confirmation</h1>
+<hr />
+<h2>Account: <%= current_user.email %></h2>
+<p>Important notice of downgrading an account:</p>
+<ul>
+  <li>All your private wikis will become public wikis after downgrade.</li>
+  <li>You will have to pay another $15 to become a premium user again.</li>
+</ul>
+<p>Click the button bellow to confirm the downgrade</p>
+<%= link_to "Downgrade", downgrades_create_path, method: :create, class: 'btn btn-danger', data: {confirm: 'This is the last chance to regret, think carefully!'} %>
