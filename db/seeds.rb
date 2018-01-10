@@ -9,6 +9,7 @@ require 'random_data'
 
   10.times do
     User.create!(
+      username: RandomData.random_name,
       email: RandomData.random_email,
       password: "password",
       role: "standard"

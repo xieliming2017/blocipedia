@@ -44,7 +44,7 @@ gem 'figaro', '1.0'
 
 gem 'pundit'
 gem 'stripe'
-
+gem 'redcarpet'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

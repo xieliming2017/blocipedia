@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
 
   resources :wikis
   resources :users
 
-  devise_for :users
   resources :charges, only: [:new, :create]
   resources :downgrades
 
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'about' => 'welcome#about'
 
-  post 'downgrades/create' 
+  post 'downgrades/create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
