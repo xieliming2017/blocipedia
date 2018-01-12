@@ -1,0 +1,7 @@
+<% if current_user.role == "premium" && wiki.is_owned_by(current_user)%>
+  <div>
+    <p>
+      this is <%= current_user.username %>'s collaborator adding partial
+    </p>
+  </div>
+<% end %>

@@ -18,11 +18,20 @@ require 'random_data'
 
   users = User.all
 
-  50.times do
+  10.times do
     Wiki.create!(
       title: RandomData.random_sentence,
       body: RandomData.random_paragraph,
       private: false,
+      user: users.sample
+    )
+  end
+
+  10.times do
+    Wiki.create!(
+      title: RandomData.random_sentence,
+      body: RandomData.random_paragraph,
+      private: true,
       user: users.sample
     )
   end
