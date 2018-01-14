@@ -19,7 +19,12 @@ class Wiki < ApplicationRecord
   end
 
   def is_collaborated_by(user)
-    if self.collaborators.where(user_id: user.id).first
+    user_list = []
+    self.collaborators.each do |collaborator|
+      user_list << collaborator.user
+    end
+
+    if user_list.include?(user)
       true
     else
       false

@@ -1,0 +1,36 @@
+<h1>
+  Update Collaborators
+</h1>
+<hr />
+<h4>Wiki: <%= @wiki.title %></h4>
+<h4>Publisher: <%= @wiki.user.username %></h4>
+<hr />
+<div>
+  <%= form_tag collaborator_path, method: :put do %>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Email</th>
+      <th scope="col">Give Access</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      <!-- create a table of all users for selection -->
+    <% @users.each do |user| %>
+      <% unless user.id == current_user.id %> <!-- skipping the wiki owner -->
+      <tr>
+        <th scope="row"><%= user.username %></th>
+        <td><%= user.email %></td>
+
+        <!-- pass an array of user IDs of all selected users into the controller -->
+        <td><%= check_box_tag "user_IDs[]", user.id%></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<%= submit_tag "Update Collaborators", :id => @wiki.id, class: 'btn btn-danger' %>
+</div>
+<% end %>
