@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  extend FriendlyId
+  friendly_id :username, use: [:slugged, :finders]
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
@@ -11,7 +14,7 @@ class User < ApplicationRecord
 
          enum role:[:standard, :premium, :admin]
 
-         def is_collaborator_of(wiki)
-           collaborators.where(wiki_id: wiki.id).first
+         def should_generate_new_friendly_id?
+           new_record? || slug.nil? || slug.blank? # you can add more condition here
          end
 end
