@@ -7,19 +7,11 @@ class Wiki < ApplicationRecord
   has_many :collaborators, dependent: :destroy
 
   def public?
-    if self.private == true
-       return false
-    else
-      return true
-    end
+    self.private != true
   end
 
   def is_owned_by(user)
-    if self.user_id == user.id
-      true
-    else
-      false
-    end
+   self.user_id == user.id
   end
 
   def is_collaborated_by(user)
@@ -28,10 +20,7 @@ class Wiki < ApplicationRecord
       user_list << collaborator.user
     end
 
-    if user_list.include?(user)
-      true
-    else
-      false
-    end
+    user_list.include?(user)
   end
+
 end

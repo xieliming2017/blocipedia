@@ -5,7 +5,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && record.private == false
+    user.present? && ( record.is_owned_by(user) || record.is_collaborated_by(user) || user.admin? )
   end
 
   class Scope
@@ -18,9 +18,9 @@ class WikiPolicy < ApplicationPolicy
 
     def resolve
       wikis = []
-      if user.role == 'admin'
+      if user.admin?
         wikis = scope.all # if the user is an admin, show them all the wikis
-      elsif user.role == 'premium'
+      elsif user.premium?
         all_wikis = scope.all
         all_wikis.each do |wiki|
           if wiki.public? || wiki.is_owned_by(user) || wiki.is_collaborated_by(user)

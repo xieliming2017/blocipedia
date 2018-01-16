@@ -1,8 +1,8 @@
 <h1><%= @wiki.title %></h1>
-<% if @wiki.private == false %>
-  <strong>Public Wiki</strong>
-<% else %>
+<% if @wiki.private? %>
   <strong>Private Wiki</strong>
+<% else %>
+  <strong>Public Wiki</strong>
 <% end %>
 
 <h4>Created by <%= @wiki.user.email %></h4>
